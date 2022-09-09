@@ -1,4 +1,4 @@
-import { getFutureDate } from "../tests/utils/get-future0date";
+import { getFutureDate } from "../tests/utils/get-future-date";
 import { Appointment } from "./appointment";
 
 describe("Appointment", () => {
