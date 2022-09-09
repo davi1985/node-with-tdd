@@ -10,7 +10,13 @@ export class Appointment {
   constructor(props: AppointmentProps) {
     const { startsAt, endsAt } = props;
 
-    this.validateDates(startsAt, endsAt);
+    if (startsAt < new Date()) {
+      throw new Error("Invalid start date");
+    }
+
+    if (endsAt <= startsAt) {
+      throw new Error("Invalid end date");
+    }
 
     this.props = props;
   }
@@ -25,15 +31,5 @@ export class Appointment {
 
   get endsAt(): Date {
     return this.props.endsAt;
-  }
-
-  private validateDates(startsAt: Date, endsAt: Date) {
-    if (startsAt < new Date()) {
-      throw new Error("Invalid start date");
-    }
-
-    if (endsAt <= startsAt) {
-      throw new Error("Invalid end date");
-    }
   }
 }
